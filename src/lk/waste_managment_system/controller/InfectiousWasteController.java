@@ -103,4 +103,21 @@ public class InfectiousWasteController {
         }
         return null;
     }
+
+//    public ArrayList<InfectiousWaste> getWasteValues() throws ClassNotFoundException, SQLException {
+//        Connection connection=ConnectionFactory.getInstance().getConnection();
+//        Statement stm=connection.createStatement();
+//        String sql="select * from infectious_waste";
+//        ResultSet rst=stm.executeQuery(sql);
+//        ArrayList<InfectiousWaste> weightDTOS = new ArrayList<>();
+//        while (rst.next()){
+//            InfectiousWaste w=new InfectiousWaste(
+//                    rst.getString(1),
+//                    rst.getString(4),
+//                    Double.parseDouble(rst.getString(3))
+//            );
+//            weightDTOS.add(w);
+//        }
+//        return weightDTOS;
+//    }
 }

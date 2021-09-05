@@ -6,21 +6,16 @@
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="627.0" prefWidth="1350.0" xmlns="http://javafx.com/javafx/8.0.171"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="lk.waste_managment_system.view.controller.LineChartInfectiousWasteFrameController">
-    <children>
-        <LineChart fx:id="lineChartInfectiousWaste" layoutX="332.0" layoutY="14.0" prefHeight="400.0" prefWidth="705.0"
-                   title="Line Chart (Infectious Waste)">
-            <xAxis>
-                <CategoryAxis side="BOTTOM"/>
-            </xAxis>
-            <yAxis>
-                <NumberAxis side="LEFT"/>
-            </yAxis>
-        </LineChart>
-        <JFXButton fx:id="loadLineChart_btn" layoutX="636.0" layoutY="518.0" onAction="#loadLineChartButtonAction"
-                   text="Load Line Chart"/>
-    </children>
+<AnchorPane prefHeight="627.0" prefWidth="1350.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.waste_managment_system.view.controller.LineChartInfectiousWasteFrameController">
+   <children>
+      <LineChart fx:id="lineChartInfectiousWaste" layoutX="332.0" layoutY="14.0" prefHeight="485.0" prefWidth="705.0" title="Line Chart (Infectious Waste)">
+        <xAxis>
+          <CategoryAxis animated="false" prefHeight="38.0" prefWidth="640.0" side="BOTTOM" startMargin="2.0" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis animated="false" label="Waste per Day" side="LEFT" tickLabelGap="5.0" tickLength="10.0" />
+        </yAxis>
+      </LineChart>
+      <JFXButton fx:id="loadLineChart_btn" layoutX="636.0" layoutY="518.0" onAction="#loadLineChartButtonAction" text="Load Line Chart" />
+   </children>
 </AnchorPane>

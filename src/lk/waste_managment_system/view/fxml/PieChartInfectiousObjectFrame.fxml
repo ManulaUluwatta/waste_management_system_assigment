@@ -8,8 +8,9 @@
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="lk.waste_managment_system.view.controller.PieChartInfectiousObjectFrameController">
     <children>
-        <PieChart layoutX="475.0" layoutY="45.0" title="Pie Chart (Infectious Object)"/>
-        <JFXButton fx:id="loadColorCode_btn" layoutX="660.0" layoutY="553.0" onAction="#loadColorCodeButtonActio"
+        <PieChart fx:id="pieChart" layoutX="25.0" layoutY="43.0" prefHeight="525.0" prefWidth="632.0"
+                  title="Pie Chart (Infectious Object)"/>
+        <JFXButton fx:id="loadColorCode_btn" layoutX="918.0" layoutY="446.0" onAction="#loadColorCodeButtonActio"
                    text="Load Color Code chart"/>
     </children>
 </AnchorPane>
