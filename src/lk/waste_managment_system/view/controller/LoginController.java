@@ -49,24 +49,6 @@ public class LoginController implements Initializable {
         userName = userName_txt.getText();
         password = password_txt.getText();
 
-//        if (userName.equals("admin") && password.equals("admin")) {
-//            try {
-//                Parent root = FXMLLoader.load(getClass().getResource("/lk/waste_managment_system/view/fxml/MainFrame.fxml"));
-//                Stage primaryStage = new Stage();
-//                primaryStage.setScene(new Scene(root));
-//                primaryStage.show();
-//                primaryStage.setTitle("Waste Management System");
-//                ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
-//                dash = FXMLLoader.load(getClass().getResource("/lk/waste_managment_system/view/fxml/InfectiousWasteFrame.fxml"));
-//                MainFrameController.rootPane.getChildren().setAll(dash.getChildren());
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        } else {
-//            JOptionPane.showMessageDialog(null, "Incorrect Username or Password");
-//        }
-
-
         String testPassword = "";
         String testUserName = "";
 
