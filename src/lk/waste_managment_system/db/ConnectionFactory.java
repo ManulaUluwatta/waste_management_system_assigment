@@ -10,14 +10,14 @@ public class ConnectionFactory {
 
     public ConnectionFactory() {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
 
-        String url = "jdbc:mysql://localhost/waste";
+        String url = "jdbc:mysql://localhost:3306/waste";
         String userName = "root";
-        String password = "root";
+        String password = "";
 
         try {
             connection = DriverManager.getConnection(url, userName, password);

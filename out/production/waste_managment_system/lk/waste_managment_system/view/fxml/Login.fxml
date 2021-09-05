@@ -4,10 +4,14 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.waste_managment_system.view.controller.LoginController">
-   <children>
-      <JFXTextField fx:id="userName_txt" labelFloat="true" layoutX="185.0" layoutY="97.0" onAction="#userNameTxtAction" prefHeight="31.0" prefWidth="231.0" promptText="User Name" />
-      <JFXTextField fx:id="password_txt" labelFloat="true" layoutX="185.0" layoutY="169.0" onAction="#passwordTxtAction" prefHeight="31.0" prefWidth="231.0" promptText="Password" />
-      <JFXButton fx:id="login_btn" layoutX="435.0" layoutY="284.0" onAction="#loginButtonAction" text="Login" />
-   </children>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="lk.waste_managment_system.view.controller.LoginController">
+    <children>
+        <JFXTextField fx:id="userName_txt" labelFloat="true" layoutX="185.0" layoutY="97.0"
+                      onAction="#userNameTxtAction" prefHeight="31.0" prefWidth="231.0" promptText="User Name"/>
+        <JFXTextField fx:id="password_txt" labelFloat="true" layoutX="185.0" layoutY="169.0"
+                      onAction="#passwordTxtAction" prefHeight="31.0" prefWidth="231.0" promptText="Password"/>
+        <JFXButton fx:id="login_btn" layoutX="435.0" layoutY="284.0" onAction="#loginButtonAction" text="Login"/>
+    </children>
 </AnchorPane>

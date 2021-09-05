@@ -2,13 +2,29 @@ package lk.waste_managment_system.view.controller;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.event.ActionEvent;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
+import lk.waste_managment_system.controller.InfectiousWasteController;
+import lk.waste_managment_system.model.InfectiousWaste;
+import lk.waste_managment_system.other.Validator;
 import lk.waste_managment_system.view.tableView.WasteTableView;
 
-public class InfectiousWasteFrameController {
+import javax.swing.*;
+import java.net.URL;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
+
+public class InfectiousWasteFrameController implements Initializable {
     @FXML
     private TableView<WasteTableView> infectiousWasteViewTable;
 
@@ -39,6 +55,10 @@ public class InfectiousWasteFrameController {
     @FXML
     private JFXButton insertDataButton;
 
+
+    @FXML
+    private JFXButton updateButton;
+
     @FXML
     private JFXTextField id_txt;
 
@@ -54,9 +74,36 @@ public class InfectiousWasteFrameController {
     @FXML
     private JFXTextField totalWastePerDay_txt;
 
+    private ObservableList<WasteTableView> data;
+
+    private InfectiousWasteController infectiousWasteController;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        infectiousWasteController = new InfectiousWasteController();
+        data = FXCollections.observableArrayList();
+        loadInfectiousWaste();
+        loadWasteID();
+    }
+
     @FXML
     void deleteButtonAction(ActionEvent event) {
+        String wasteID = id_txt.getText();
+        try {
+            if (infectiousWasteController.deleteInfectiousWaste(wasteID)) {
+                JOptionPane.showMessageDialog(null, "Deleted");
+            } else {
+                JOptionPane.showMessageDialog(null, "Delete Failed");
+            }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
+        loadInfectiousWaste();
+        clearText();
+        loadWasteID();
     }
 
     @FXML
@@ -64,8 +111,125 @@ public class InfectiousWasteFrameController {
 
     }
 
+
+    @FXML
+    void updateButtonAction(ActionEvent event) {
+        Boolean isValidatorOk = Validator.isNotEmpty(new String[]{
+                id_txt.getText(),
+                typeOfWaste_txt.getText(),
+                wasteObject_txt.getText(),
+                typeOfContainer_txt.getText(),
+                totalWastePerDay_txt.getText(),
+
+        });
+        if (!isValidatorOk) {
+            JOptionPane.showMessageDialog(null, "Please fill all text field");
+        } else {
+
+
+            InfectiousWaste infectiousWaste = new InfectiousWaste(
+                    id_txt.getText(),
+                    typeOfWaste_txt.getText(),
+                    wasteObject_txt.getText(),
+                    Integer.parseInt(typeOfContainer_txt.getText()),
+                    Integer.parseInt(totalWastePerDay_txt.getText())
+
+            );
+
+            try {
+                Boolean isAdd = infectiousWasteController.updateInfectiousWaste(infectiousWaste);
+
+                if (isAdd) {
+                    JOptionPane.showMessageDialog(null, "Successfully Update");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Failed");
+                }
+
+                loadInfectiousWaste();
+                clearText();
+                loadWasteID();
+
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+    }
+
     @FXML
     void insertDataButtonAction(ActionEvent event) {
+
+        Boolean isValidatorOk = Validator.isNotEmpty(new String[]{
+                id_txt.getText(),
+                typeOfWaste_txt.getText(),
+                wasteObject_txt.getText(),
+                typeOfContainer_txt.getText(),
+                totalWastePerDay_txt.getText(),
+
+        });
+        if (!isValidatorOk) {
+            JOptionPane.showMessageDialog(null, "Please fill all text field");
+        } else {
+
+
+            InfectiousWaste infectiousWaste = new InfectiousWaste(
+                    id_txt.getText(),
+                    typeOfWaste_txt.getText(),
+                    wasteObject_txt.getText(),
+                    Integer.parseInt(typeOfContainer_txt.getText()),
+                    Integer.parseInt(totalWastePerDay_txt.getText())
+
+            );
+
+            try {
+                Boolean isAdd = infectiousWasteController.addInfectiousWaste(infectiousWaste);
+
+                if (isAdd) {
+                    JOptionPane.showMessageDialog(null, "Successfully Added");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Failed");
+                }
+
+                loadInfectiousWaste();
+                clearText();
+                loadWasteID();
+
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+    }
+
+
+    @FXML
+    void infectiousWasteViewTableAction(MouseEvent event) {
+        WasteTableView wasteTableView = infectiousWasteViewTable.getSelectionModel().getSelectedItem();
+        id_txt.setText("" + wasteTableView.getWasteID());
+
+        String id = id_txt.getText();
+
+
+        try {
+            List<InfectiousWaste> allInfectiousWaste = infectiousWasteController.getID(id);
+            for (InfectiousWaste waste :
+                    allInfectiousWaste) {
+                typeOfWaste_txt.setText(waste.getTypeOfWaste());
+                wasteObject_txt.setText(waste.getObject());
+                typeOfContainer_txt.setText(waste.getTypeOfContainer() + "");
+                totalWastePerDay_txt.setText(waste.getWastePerDay() + "");
+            }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -98,5 +262,66 @@ public class InfectiousWasteFrameController {
     void wasteObject_txtAction(ActionEvent event) {
 
     }
+
+    private void loadInfectiousWaste() {
+        if (!data.isEmpty()) {
+            for (int i = data.size(); i > 0; i--) {
+                data.remove(i - 1);
+            }
+        }
+
+
+        try {
+            List<InfectiousWaste> allInfectiousWaste = infectiousWasteController.view();
+            if (allInfectiousWaste != null) {
+                for (InfectiousWaste waste :
+                        allInfectiousWaste) {
+                    data.add(new WasteTableView(
+                            waste.getWasteID(),
+                            waste.getTypeOfWaste(),
+                            waste.getObject(),
+                            waste.getTypeOfContainer(),
+                            waste.getWastePerDay()
+                    ));
+                }
+            }
+            infectiousWasteViewTable.getItems().removeAll();
+            wasteId_clm.setCellValueFactory(new PropertyValueFactory("wasteID"));
+            typeWaste_clm.setCellValueFactory(new PropertyValueFactory("typeOfWaste"));
+            object_clm.setCellValueFactory(new PropertyValueFactory("object"));
+            typeOfContainer_clm.setCellValueFactory(new PropertyValueFactory("typeOfContainer"));
+            wastePerDay_clm.setCellValueFactory(new PropertyValueFactory("wastePerDay"));
+
+            infectiousWasteViewTable.setItems(data);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void loadWasteID() {
+        try {
+            if (infectiousWasteController.getLastId() != null) {
+                int lastID = 1 + Integer.parseInt(infectiousWasteController.getLastId());
+                id_txt.setText(lastID + "");
+            } else {
+                id_txt.setText("1");
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    public void clearText() {
+        id_txt.setText("");
+        typeOfWaste_txt.setText("");
+        wasteObject_txt.setText("");
+        typeOfContainer_txt.setText("");
+        totalWastePerDay_txt.setText("");
+        loadInfectiousWaste();
+    }
+
 
 }

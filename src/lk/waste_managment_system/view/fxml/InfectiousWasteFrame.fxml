@@ -7,12 +7,12 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane prefHeight="627.0" prefWidth="1350.0" xmlns="http://javafx.com/javafx/8.0.171"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="lk.waste_managment_system.view.controller.InfectiousWasteFrameController">
     <children>
-        <TableView fx:id="infectiousWasteViewTable" layoutX="501.0" layoutY="50.0" prefHeight="498.0" prefWidth="815.0">
+        <TableView fx:id="infectiousWasteViewTable" layoutX="501.0" layoutY="50.0"
+                   onMouseClicked="#infectiousWasteViewTableAction" prefHeight="498.0" prefWidth="815.0">
             <columns>
                 <TableColumn fx:id="wasteId_clm" prefWidth="75.0" text="ID"/>
                 <TableColumn fx:id="typeWaste_clm" prefWidth="167.0" text="Type of Waste"/>
@@ -27,8 +27,8 @@
                    text="Total Waste Day"/>
         <JFXButton fx:id="insertDataButton" layoutX="141.0" layoutY="517.0" onAction="#insertDataButtonAction"
                    text="Insert Date"/>
-        <JFXTextField fx:id="id_txt" labelFloat="true" layoutX="86.0" layoutY="113.0" onAction="#id_txtAction"
-                      prefHeight="31.0" prefWidth="275.0" promptText="ID"/>
+        <JFXTextField fx:id="id_txt" editable="false" labelFloat="true" layoutX="86.0" layoutY="113.0"
+                      onAction="#id_txtAction" prefHeight="31.0" prefWidth="275.0" promptText="ID"/>
         <JFXTextField fx:id="typeOfWaste_txt" labelFloat="true" layoutX="75.0" layoutY="200.0"
                       onAction="#typeOfWaste_txtAction" prefHeight="31.0" prefWidth="275.0" promptText="Type of Waste"/>
         <JFXTextField fx:id="wasteObject_txt" labelFloat="true" layoutX="75.0" layoutY="268.0"
@@ -40,5 +40,6 @@
                       onAction="#totalWastePerDay_txtAction" prefHeight="31.0" prefWidth="275.0"
                       promptText="Tptal Waste per Day"/>
         <Label layoutX="69.0" layoutY="29.0" prefHeight="31.0" prefWidth="267.0" text="Infectious Waste Details"/>
+        <JFXButton fx:id="updateButton" layoutX="315.0" layoutY="548.0" onAction="#updateButtonAction" text="Update"/>
     </children>
 </AnchorPane>

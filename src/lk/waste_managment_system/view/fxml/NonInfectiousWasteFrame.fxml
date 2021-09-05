@@ -27,7 +27,7 @@
                  text="Total Waste Day"/>
       <JFXButton fx:id="insertDataButton" layoutX="141.0" layoutY="517.0" onAction="#insertDataButtonAction"
                  text="Insert Date"/>
-      <JFXTextField fx:id="id_txt" labelFloat="true" layoutX="86.0" layoutY="113.0" onAction="#id_txtAction"
+      <JFXTextField fx:id="id_txt" editable="false" layoutX="86.0" layoutY="113.0" onAction="#id_txtAction"
                     prefHeight="31.0" prefWidth="275.0" promptText="ID"/>
       <JFXTextField fx:id="typeOfWaste_txt" labelFloat="true" layoutX="75.0" layoutY="200.0"
                     onAction="#typeOfWaste_txtAction" prefHeight="31.0" prefWidth="275.0" promptText="Type of Waste"/>
@@ -40,5 +40,7 @@
                     onAction="#totalWastePerDay_txtAction" prefHeight="31.0" prefWidth="275.0"
                     promptText="Tptal Waste per Day"/>
       <Label layoutX="68.0" layoutY="29.0" prefHeight="31.0" prefWidth="267.0" text="Non Infectious Waste Details"/>
+      <JFXButton fx:id="updateButton" layoutX="268.0" layoutY="556.0" onAction="#updateButtonAction"
+                 text="Insert Date"/>
    </children>
 </AnchorPane>
