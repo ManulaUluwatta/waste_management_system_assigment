@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="627.0" prefWidth="1350.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.waste_managment_system.view.controller.InfectiousWasteFrameController">
+   <children>
+      <TableView fx:id="infectiousWasteViewTable" layoutX="501.0" layoutY="50.0" prefHeight="498.0" prefWidth="815.0">
+        <columns>
+          <TableColumn fx:id="wasteId_clm" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="typeWaste_clm" prefWidth="167.0" text="Type of Waste" />
+            <TableColumn fx:id="object_clm" prefWidth="191.0" text="Object" />
+            <TableColumn fx:id="typeOfContainer_clm" prefWidth="161.0" text="Type of container" />
+            <TableColumn fx:id="wastePerDay_clm" prefWidth="220.0" text="Waste/Day" />
+        </columns>
+      </TableView>
+      <JFXButton fx:id="deleteButton" layoutX="963.0" layoutY="571.0" onAction="#deleteButtonAction" text="Delete" />
+      <JFXButton fx:id="loadButton" layoutX="1061.0" layoutY="571.0" onAction="#loadButtonAction" text="Load" />
+      <JFXButton fx:id="totalWasteDayButton" layoutX="1188.0" layoutY="571.0" onAction="#totalWasteDayButtonAction" text="Total Waste Day" />
+      <JFXButton fx:id="insertDataButton" layoutX="141.0" layoutY="517.0" onAction="#insertDataButtonAction" text="Insert Date" />
+      <JFXTextField fx:id="id_txt" labelFloat="true" layoutX="86.0" layoutY="113.0" onAction="#id_txtAction" prefHeight="31.0" prefWidth="275.0" promptText="ID" />
+      <JFXTextField fx:id="typeOfWaste_txt" labelFloat="true" layoutX="75.0" layoutY="200.0" onAction="#typeOfWaste_txtAction" prefHeight="31.0" prefWidth="275.0" promptText="Type of Waste" />
+      <JFXTextField fx:id="wasteObject_txt" labelFloat="true" layoutX="75.0" layoutY="268.0" onAction="#wasteObject_txtAction" prefHeight="31.0" prefWidth="275.0" promptText="Waste Object" />
+      <JFXTextField fx:id="typeOfContainer_txt" labelFloat="true" layoutX="75.0" layoutY="330.0" onAction="#typeOfContainer_txtAction" prefHeight="31.0" prefWidth="275.0" promptText="Type of Container" />
+      <JFXTextField fx:id="totalWastePerDay_txt" labelFloat="true" layoutX="68.0" layoutY="398.0" onAction="#totalWastePerDay_txtAction" prefHeight="31.0" prefWidth="275.0" promptText="Tptal Waste per Day" />
+      <Label layoutX="69.0" layoutY="29.0" prefHeight="31.0" prefWidth="267.0" text="Infectious Waste Details" />
+   </children>
+</AnchorPane>
