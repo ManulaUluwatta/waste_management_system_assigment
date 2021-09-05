@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.paint.Paint;
 import lk.waste_managment_system.controller.NonInfectiousWasteController;
 import lk.waste_managment_system.model.InfectiousWaste;
 import lk.waste_managment_system.model.NonInfectiousWaste;
@@ -216,22 +217,42 @@ public class NonInfectiousWasteFrameController implements Initializable {
 
     @FXML
     void totalWastePerDay_txtAction(ActionEvent event) {
-
+        boolean result = Validator.isNumber(totalWastePerDay_txt.getText());
+        if (result) {
+            totalWastePerDay_txt.setFocusColor(Paint.valueOf("#4059a9"));
+        } else {
+            totalWastePerDay_txt.setFocusColor(Paint.valueOf("red"));
+        }
     }
 
     @FXML
     void typeOfContainer_txtAction(ActionEvent event) {
-
+        boolean result = Validator.isNumber(typeOfContainer_txt.getText());
+        if (result) {
+            typeOfContainer_txt.setFocusColor(Paint.valueOf("#4059a9"));
+        } else {
+            typeOfContainer_txt.setFocusColor(Paint.valueOf("red"));
+        }
     }
 
     @FXML
     void typeOfWaste_txtAction(ActionEvent event) {
-
+        boolean result = Validator.isAlpha(typeOfWaste_txt.getText());
+        if (result) {
+            typeOfWaste_txt.setFocusColor(Paint.valueOf("#4059a9"));
+        } else {
+            typeOfWaste_txt.setFocusColor(Paint.valueOf("red"));
+        }
     }
 
     @FXML
     void wasteObject_txtAction(ActionEvent event) {
-
+        boolean result = Validator.isAlpha(wasteObject_txt.getText());
+        if (result) {
+            wasteObject_txt.setFocusColor(Paint.valueOf("#4059a9"));
+        } else {
+            wasteObject_txt.setFocusColor(Paint.valueOf("red"));
+        }
     }
 
     private void loadNonInfectiousWaste() {
