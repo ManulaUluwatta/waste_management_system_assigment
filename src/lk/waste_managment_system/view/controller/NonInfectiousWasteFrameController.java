@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Paint;
 import lk.waste_managment_system.controller.NonInfectiousWasteController;
 import lk.waste_managment_system.model.InfectiousWaste;
@@ -252,6 +253,30 @@ public class NonInfectiousWasteFrameController implements Initializable {
             wasteObject_txt.setFocusColor(Paint.valueOf("#4059a9"));
         } else {
             wasteObject_txt.setFocusColor(Paint.valueOf("red"));
+        }
+    }
+
+    @FXML
+    void nonInfectiousWasteTableAction(MouseEvent event) {
+        WasteTableView wasteTableView = nonInfectiousWasteViewTable.getSelectionModel().getSelectedItem();
+        id_txt.setText("" + wasteTableView.getWasteID());
+
+        String id = id_txt.getText();
+
+
+        try {
+            List<NonInfectiousWaste> allNonInfectiousWaste = nonInfectiousWasteController.getID(id);
+            for (NonInfectiousWaste waste :
+                    allNonInfectiousWaste) {
+                typeOfWaste_txt.setText(waste.getTypeOfWaste());
+                wasteObject_txt.setText(waste.getObject());
+                typeOfContainer_txt.setText(waste.getTypeOfContainer() + "");
+                totalWastePerDay_txt.setText(waste.getWastePerDay() + "");
+            }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
