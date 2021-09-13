@@ -45,7 +45,7 @@ public class LineChartInfectiousWasteFrameController implements Initializable {
             if (allInfectiousWaste != null) {
                 for (InfectiousWaste waste :
                         allInfectiousWaste) {
-                    series.getData().add(new XYChart.Data<String, Integer>(waste.getObject(), waste.getWastePerDay()));
+                    series.getData().add(new XYChart.Data<String, Integer>(waste.getTypeOfWaste(), waste.getWastePerDay()));
                 }
             }
 

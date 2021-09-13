@@ -67,26 +67,31 @@ public class LoginController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        if (userName.equals(userName) && testPassword.equals(password)) {
-            try {
-                Parent root = FXMLLoader.load(getClass().getResource("/lk/waste_managment_system/view/fxml/MainFrame.fxml"));
-                Stage primaryStage = new Stage();
-                primaryStage.setScene(new Scene(root));
-                primaryStage.show();
-                primaryStage.setTitle("Waste Management System");
-                ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
-                dash = FXMLLoader.load(getClass().getResource("/lk/waste_managment_system/view/fxml/InfectiousWasteFrame.fxml"));
-                MainFrameController.rootPane.getChildren().setAll(dash.getChildren());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
+        System.out.println("user name :" + userName);
+        System.out.println("password :" + password);
+        if (userName.isEmpty() || password.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please insert user name and password");
         } else {
-            JOptionPane.showMessageDialog(null, "Invalied Password");
+            if (userName.equals(testUserName) && password.equals(testPassword)) {
+                try {
+                    Parent root = FXMLLoader.load(getClass().getResource("/lk/waste_managment_system/view/fxml/MainFrame.fxml"));
+                    Stage primaryStage = new Stage();
+                    primaryStage.setScene(new Scene(root));
+                    primaryStage.show();
+                    primaryStage.setTitle("Waste Management System");
+                    ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
+                    dash = FXMLLoader.load(getClass().getResource("/lk/waste_managment_system/view/fxml/InfectiousWasteFrame.fxml"));
+                    MainFrameController.rootPane.getChildren().setAll(dash.getChildren());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalied Password or User Name");
+
+            }
         }
     }
-
     @FXML
     void passwordTxtAction(ActionEvent event) {
 
